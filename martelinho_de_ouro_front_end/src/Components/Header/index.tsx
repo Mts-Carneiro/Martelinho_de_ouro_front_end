@@ -7,11 +7,11 @@ export const Header = () => {
   return (
     <HeaderComponent>
       <div className="home">
-        <GrHomeRounded />
+        <GrHomeRounded className="menu_click " />
         <TitleCompany />
       </div>
       <h2>Gestor de Serviços</h2>
-      <BiSolidUserRectangle />
+      <BiSolidUserRectangle className="menu_click perfil" />
     </HeaderComponent>
   );
 };

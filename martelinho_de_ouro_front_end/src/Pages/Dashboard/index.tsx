@@ -1,5 +1,6 @@
 import { Header } from "../../Components/Header";
 import { NavigateBar } from "../../Components/Header/NavigateBar";
+import { Main } from "../../Components/MainBox";
 import { StyledDashboard } from "./styled";
 
 export const Dashboard = () => {
@@ -7,6 +8,7 @@ export const Dashboard = () => {
     <StyledDashboard>
       <Header />
       <NavigateBar />
+      <Main />
     </StyledDashboard>
   );
 };
