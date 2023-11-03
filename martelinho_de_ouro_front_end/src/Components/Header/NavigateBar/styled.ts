@@ -8,7 +8,7 @@ export const StyledNavBar = styled.div`
   justify-content: space-between;
   gap: 20px;
   padding: 10px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 5px 10px rgb(199 199 199 / 50%);
 
   .page_list {
     display: flex;
