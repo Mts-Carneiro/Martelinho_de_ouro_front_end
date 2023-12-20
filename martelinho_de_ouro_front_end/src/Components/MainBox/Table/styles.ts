@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const StyledTable = styled.table`
-  width: 90%;
+  width: 100%;
   height: -webkit-fill-available;
   margin-top: 17px;
-  border-collapse: collapse; // Isso garante que as bordas sejam colapsadas
+  border-collapse: collapse;
 
   td,
   th {

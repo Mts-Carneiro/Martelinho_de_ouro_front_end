@@ -10,11 +10,10 @@ export const Main = () => {
           <h6>Atrasados</h6>
           <h6>Dentro do Prazo</h6>
         </div>
-        <div>
-          <input type="text" />
-        </div>
       </div>
-      <Table></Table>
+      <div className="table_div">
+        <Table></Table>
+      </div>
     </StyledMainBox>
   );
 };

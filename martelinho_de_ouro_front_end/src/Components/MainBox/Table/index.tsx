@@ -1,3 +1,4 @@
+import { Tr } from "./Tr";
 import { StyledTable } from "./styles";
 
 export const Table = () => {
@@ -15,66 +16,36 @@ export const Table = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>2234567</td>
-          <td>Gol</td>
-          <td>Aprovado</td>
-          <td>Particular</td>
-          <td>15/12/2023</td>
-          <td>Dentro do prazo</td>
-          <td>
-            <div>
-              <h6>x</h6>
-              <h6>i</h6>
-              <h6>O</h6>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>2234567</td>
-          <td>Gol</td>
-          <td>Aprovado</td>
-          <td>Particular</td>
-          <td>15/12/2023</td>
-          <td>Dentro do prazo</td>
-          <td>
-            <div>
-              <h6>x</h6>
-              <h6>i</h6>
-              <h6>O</h6>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>2234567</td>
-          <td>Gol</td>
-          <td>Aprovado</td>
-          <td>Particular</td>
-          <td>15/12/2023</td>
-          <td>Dentro do prazo</td>
-          <td>
-            <div>
-              <h6>x</h6>
-              <h6>i</h6>
-              <h6>O</h6>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>2234567</td>
-          <td>Gol</td>
-          <td>Aprovado</td>
-          <td>Particular</td>
-          <td>15/12/2023</td>
-          <td>Dentro do prazo</td>
-          <td>
-            <div>
-              <h6>x</h6>
-              <h6>i</h6>
-              <h6>O</h6>
-            </div>
-          </td>
-        </tr>
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
+        <Tr />
       </tbody>
     </StyledTable>
   );

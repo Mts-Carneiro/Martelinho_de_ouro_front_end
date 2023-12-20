@@ -12,6 +12,12 @@ export const StyledMainBox = styled.div`
   flex-direction: column;
   padding-top: 25px;
 
+  .table_div {
+    width: 90%;
+    height: -webkit-fill-available;
+    overflow-y: auto;
+  }
+
   .options_header {
     display: flex;
     flex-direction: row;

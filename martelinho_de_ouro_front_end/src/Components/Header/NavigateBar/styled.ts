@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledNavBar = styled.div`
   background-color: #f4f4f4;
-  height: 26px;
   width: -webkit-fill-available;
   display: flex;
   justify-content: space-between;
