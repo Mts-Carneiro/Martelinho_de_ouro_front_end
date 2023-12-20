@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledDashboard = styled.div`
+export const StyledEmployesPage = styled.div`
   width: 100vw;
   display: flex;
   flex-direction: column;
