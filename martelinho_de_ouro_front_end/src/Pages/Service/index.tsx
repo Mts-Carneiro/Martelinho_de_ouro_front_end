@@ -1,6 +1,6 @@
 import { Header } from "../../Components/Header";
 import { NavigateBar } from "../../Components/Header/NavigateBar";
-import { Main } from "../../Components/MainBox";
+import { MainService } from "../../Components/MainBox";
 import { StyledServicePage } from "./styled";
 
 export const ServicePage = () => {
@@ -8,7 +8,7 @@ export const ServicePage = () => {
     <StyledServicePage>
       <Header />
       <NavigateBar />
-      <Main />
+      <MainService />
     </StyledServicePage>
   );
 };

@@ -1,7 +1,7 @@
-import { Table } from "./Table";
+import { TableAsset, TableEmployer, TableService } from "./Table";
 import { StyledMainBox } from "./styles";
 
-export const Main = () => {
+export const MainService = () => {
   return (
     <StyledMainBox>
       <div className="options_header">
@@ -12,7 +12,27 @@ export const Main = () => {
         </div>
       </div>
       <div className="table_div">
-        <Table></Table>
+        <TableService></TableService>
+      </div>
+    </StyledMainBox>
+  );
+};
+
+export const MainEmployees = () => {
+  return (
+    <StyledMainBox>
+      <div className="table_div">
+        <TableEmployer></TableEmployer>
+      </div>
+    </StyledMainBox>
+  );
+};
+
+export const MainAsset = () => {
+  return (
+    <StyledMainBox>
+      <div className="table_div">
+        <TableAsset></TableAsset>
       </div>
     </StyledMainBox>
   );
