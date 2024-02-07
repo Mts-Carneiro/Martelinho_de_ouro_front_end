@@ -1,4 +1,9 @@
-import { TableAsset, TableEmployer, TableService } from "./Table";
+import {
+  TableAsset,
+  TableEmployer,
+  TableLiability,
+  TableService,
+} from "./Table";
 import { StyledMainBox } from "./styles";
 
 export const MainService = () => {
@@ -32,7 +37,23 @@ export const MainAsset = () => {
   return (
     <StyledMainBox>
       <div className="table_div">
+        <div className="table_div_add_button">
+          <button>Adicionar Entrada</button>
+        </div>
         <TableAsset></TableAsset>
+      </div>
+    </StyledMainBox>
+  );
+};
+
+export const MainLiability = () => {
+  return (
+    <StyledMainBox>
+      <div className="table_div">
+        <div className="table_div_add_button">
+          <button>Adicionar Despesa</button>
+        </div>
+        <TableLiability></TableLiability>
       </div>
     </StyledMainBox>
   );

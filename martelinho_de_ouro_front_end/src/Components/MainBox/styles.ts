@@ -16,6 +16,11 @@ export const StyledMainBox = styled.div`
     width: 90%;
     height: -webkit-fill-available;
     overflow-y: auto;
+
+    .table_div_add_button {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 
   .options_header {

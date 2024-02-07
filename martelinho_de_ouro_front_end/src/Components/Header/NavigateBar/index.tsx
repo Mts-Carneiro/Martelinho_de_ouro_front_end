@@ -9,6 +9,7 @@ export const NavigateBar = () => {
         <p>Colaboradores</p>
         <p>Entradas</p>
         <p>Saidas</p>
+        <p>Balanço</p>
       </div>
       <SarchBar />
     </StyledNavBar>

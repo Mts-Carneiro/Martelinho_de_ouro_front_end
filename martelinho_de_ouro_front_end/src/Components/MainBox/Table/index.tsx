@@ -165,8 +165,8 @@ export const TableAsset = () => {
     <StyledTable>
       <thead>
         <tr>
-          <th>Nome</th>
           <th>Tipo</th>
+          <th>Nome</th>
           <th>Descrição</th>
           <th>Valor</th>
           <th>Data</th>
@@ -175,20 +175,59 @@ export const TableAsset = () => {
       </thead>
       <tbody>
         <tr>
-          <td>Recibo Onix</td>
-          <td>Serviço</td>
-          <td>Teste de descrição</td>
-          <td>R$200,00</td>
+          <td>Recebimento</td>
+          <td>Pagamento</td>
+          <td>Pagamento referente ao Oxix JkP-21A0</td>
+          <td>R$250,00</td>
           <td>21/10/23</td>
           <td>
             <ActionBox />
           </td>
         </tr>
         <tr>
-          <td>Recibo Onix</td>
-          <td>Serviço</td>
-          <td>Teste de descrição</td>
-          <td>R$200,00</td>
+          <td>Recebimento</td>
+          <td>Pagamento</td>
+          <td>Pagamento referente ao Oxix JkP-21A0</td>
+          <td>R$250,00</td>
+          <td>21/10/23</td>
+          <td>
+            <ActionBox />
+          </td>
+        </tr>
+      </tbody>
+    </StyledTable>
+  );
+};
+
+export const TableLiability = () => {
+  return (
+    <StyledTable>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th>Data</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Despesa</td>
+          <td>Aluguel</td>
+          <td>Aluguel referente ao mes 03</td>
+          <td>R$2500,00</td>
+          <td>21/10/23</td>
+          <td>
+            <ActionBox />
+          </td>
+        </tr>
+        <tr>
+          <td>Despesa</td>
+          <td>Salario Funcionario</td>
+          <td>Pagamento da quizena do João</td>
+          <td>R$1050,00</td>
           <td>21/10/23</td>
           <td>
             <ActionBox />
