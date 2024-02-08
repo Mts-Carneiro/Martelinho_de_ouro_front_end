@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { StyledModalForm, StyledDivModal } from "./style";
+import { StyledModalForm, StyledDivModal } from "../style";
 
 const customStyles = {
   content: {
@@ -11,13 +11,13 @@ const customStyles = {
   },
 };
 
-let modal = true;
+let modal = false;
 
-export const ModalCreateLiability = () => {
+export const ModalEditLiability = () => {
   return (
     <Modal isOpen={modal} style={customStyles}>
       <StyledDivModal>
-        <h2>Crie uma nova despesa</h2>
+        <h2>Edite sua despesa</h2>
 
         <StyledModalForm>
           <label>Valor</label>
@@ -35,7 +35,7 @@ export const ModalCreateLiability = () => {
         </StyledModalForm>
 
         <div className="div_modal_button">
-          <button>criar despesa</button>
+          <button>Salvar despesa</button>
           <button>Cancelar</button>
         </div>
       </StyledDivModal>
