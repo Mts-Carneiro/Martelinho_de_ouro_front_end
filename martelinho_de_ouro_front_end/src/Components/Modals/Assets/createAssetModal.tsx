@@ -13,11 +13,11 @@ const customStyles = {
 
 let modal = true;
 
-export const ModalCreateLiability = () => {
+export const ModalCreateAsset = () => {
   return (
     <Modal isOpen={modal} style={customStyles}>
       <StyledDivModal>
-        <h2>Crie uma nova despesa</h2>
+        <h2>Crie uma nova entrada</h2>
 
         <StyledModalForm>
           <label>Valor</label>
@@ -27,7 +27,10 @@ export const ModalCreateLiability = () => {
           <input type="date" />
           <span>Erro...</span>
           <label>Nome</label>
-          <input type="text" placeholder="Nome da despesa" />
+          <input type="text" placeholder="Nome da entrada" />
+          <span>Erro...</span>
+          <label>Tipo</label>
+          <input type="text" placeholder="Tipo da entrada" />
           <span>Erro...</span>
           <label>Observação</label>
           <input type="text" placeholder="" />
@@ -35,7 +38,7 @@ export const ModalCreateLiability = () => {
         </StyledModalForm>
 
         <div className="div_modal_button">
-          <button>criar despesa</button>
+          <button>criar entrada</button>
           <button>Cancelar</button>
         </div>
       </StyledDivModal>

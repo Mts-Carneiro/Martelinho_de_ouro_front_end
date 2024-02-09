@@ -13,11 +13,11 @@ const customStyles = {
 
 let modal = false;
 
-export const ModalDeleteLiability = () => {
+export const ModalDeleteAsset = () => {
   return (
     <Modal isOpen={modal} style={customStyles}>
       <StyledDivModal>
-        <h2>Você Deseja realmente apagar esta despesa?</h2>
+        <h2>Você Deseja realmente apagar esta entrada?</h2>
 
         <div className="div_modal_button">
           <button>Apagar</button>
