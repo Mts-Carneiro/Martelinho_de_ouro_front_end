@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledLoginPage = styled.section`
+export const StyledRegisterPage = styled.section`
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -8,9 +8,10 @@ export const StyledLoginPage = styled.section`
   flex-direction: row;
   align-items: center;
 
-  .div_login {
+  .div_register {
     width: 40%;
     height: 60%;
+    min-height: 490px;
     display: flex;
     flex-direction: column;
     align-items: center;

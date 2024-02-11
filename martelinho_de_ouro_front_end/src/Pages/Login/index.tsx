@@ -3,7 +3,7 @@ import { StyledLoginPage } from "./style";
 export const LoginPage = () => {
   return (
     <StyledLoginPage>
-      <div>
+      <div className="div_login">
         <h3>Login</h3>
 
         <form>
@@ -11,12 +11,13 @@ export const LoginPage = () => {
           <input type="email" placeholder="exemplo@mail.com" />
 
           <label>Senha</label>
-          <input type="password" />
+          <input type="password" placeholder="********" />
 
           <button>Entrar</button>
         </form>
 
-        <button>Criar sua conta</button>
+        <button>Esquci minha senha</button>
+        <button>Criar Nova Conta</button>
       </div>
     </StyledLoginPage>
   );
