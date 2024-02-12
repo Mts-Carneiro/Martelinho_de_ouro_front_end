@@ -13,8 +13,8 @@ export const RouterMain = () => {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/service" element={<ServicePage />} />
       <Route path="/asset" element={<AssetPage />} />
-      <Route path="/" element={<LiabilityPage />} />
-      {<Route path="/employe" element={<EmployePage />} />}
+      <Route path="/liability" element={<LiabilityPage />} />
+      <Route path="/employe" element={<EmployePage />} />
     </Routes>
   );
 };
