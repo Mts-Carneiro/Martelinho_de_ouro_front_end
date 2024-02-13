@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import api from "../Service/api";
@@ -73,7 +73,8 @@ const AuthProvider = ({ children }: iAuthContextProps) => {
 
   const registerUser = async (data: iUserRegister) => {
     try {
-      await api.post("/register", data);
+      console.log(data);
+      await api.post("/user", data);
       toast.success("Usuario cadastrado com sucesso!");
       try {
         loginUser({ email: data.email, password: data.password });
