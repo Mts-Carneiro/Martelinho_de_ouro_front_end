@@ -15,6 +15,7 @@ export const MainService = () => {
           <h6>Atrasados</h6>
           <h6>Dentro do Prazo</h6>
         </div>
+        <button>Adicionar um Servio</button>
       </div>
       <div className="table_div">
         <TableService></TableService>

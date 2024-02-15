@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import ReactModal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import api from "../Service/api";
@@ -35,6 +35,7 @@ interface iAuthContext {
   user: iUser | null;
   loginUser: (data: iLogin) => Promise<void>;
   registerUser: (data: iUserRegister) => Promise<void>;
+  getUser: () => Promise<void>;
 }
 
 export const AuthContext = createContext({} as iAuthContext);
@@ -44,9 +45,11 @@ const AuthProvider = ({ children }: iAuthContextProps) => {
 
   const navigate = useNavigate();
 
-  const getUser = async (userId: string) => {
+  const getUser = async () => {
     try {
-      const { data } = await api.get(`/user/${userId}`);
+      const { data } = await api.get(
+        `/user/${localStorage.getItem("@USER_ID")}`
+      );
       setUser(data);
     } catch {
       console.log("erro");
@@ -62,18 +65,16 @@ const AuthProvider = ({ children }: iAuthContextProps) => {
       api.defaults.headers.authorization = `Bearer ${token}`;
       localStorage.setItem("@Token", token);
       localStorage.setItem("@USER_ID", decodedToken?.id);
-      getUser(decodedToken.id);
+      getUser();
       navigate("/service");
       toast.success("Login realizado com sucesso!");
     } catch {
-      console.log("login falhou");
       toast.error("Verifique os dados informados e tente novamente!");
     }
   };
 
   const registerUser = async (data: iUserRegister) => {
     try {
-      console.log(data);
       await api.post("/user", data);
       toast.success("Usuario cadastrado com sucesso!");
       try {
@@ -87,7 +88,7 @@ const AuthProvider = ({ children }: iAuthContextProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loginUser, registerUser }}>
+    <AuthContext.Provider value={{ user, loginUser, registerUser, getUser }}>
       {children}
     </AuthContext.Provider>
   );
