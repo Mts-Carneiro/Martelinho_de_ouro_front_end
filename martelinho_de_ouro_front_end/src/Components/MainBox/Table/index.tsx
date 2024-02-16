@@ -1,8 +1,11 @@
-import { Tr } from "./Tr";
+import { useContext } from "react";
 import { ActionBox } from "./Tr/ActionBox";
 import { StyledTable } from "./styles";
+import { ServiceContext } from "../../../Context/serviceContext";
+import { format } from "date-fns";
 
 export const TableService = () => {
+  const { services } = useContext(ServiceContext);
   return (
     <StyledTable>
       <thead>
@@ -17,36 +20,30 @@ export const TableService = () => {
         </tr>
       </thead>
       <tbody>
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
-        <Tr />
+        {services.map((item, i) => (
+          <tr key={i}>
+            <td>{item.license_plate}</td>
+            <td>{item.vehicle}</td>
+            <td>{item.status}</td>
+            <td>{item.enterprise}</td>
+            <td>{format(new Date(item.delivery_date), "dd/MM/yyyy")}</td>
+            <td>Dentro do prazo</td>
+            <td>
+              <ActionBox />
+            </td>
+          </tr>
+        ))}
+        <tr>
+          <td>2234567</td>
+          <td>Gol</td>
+          <td>Aprovado</td>
+          <td>Particular</td>
+          <td>15/12/2023</td>
+          <td>Dentro do prazo</td>
+          <td>
+            <ActionBox />
+          </td>
+        </tr>
       </tbody>
     </StyledTable>
   );
