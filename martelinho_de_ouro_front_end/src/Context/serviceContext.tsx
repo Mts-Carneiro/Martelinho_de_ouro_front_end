@@ -16,10 +16,14 @@ const ServiceProvider = ({ children }: iServiceContextProps) => {
   const [services, setServices] = useState<IServices>([]);
 
   const loadServices = async () => {
-    const token = localStorage.getItem("@Token");
-    api.defaults.headers.authorization = `Bearer ${token}`;
-    const { data } = await api.get(`/service`);
-    setServices(data);
+    try {
+      const token = localStorage.getItem("@Token");
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      const { data } = await api.get(`/service`);
+      setServices(data);
+    } catch {
+      console.log("Erro");
+    }
   };
 
   useEffect(() => {

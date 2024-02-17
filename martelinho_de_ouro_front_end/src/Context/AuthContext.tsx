@@ -36,12 +36,14 @@ interface iAuthContext {
   loginUser: (data: iLogin) => Promise<void>;
   registerUser: (data: iUserRegister) => Promise<void>;
   getUser: () => Promise<void>;
+  setCurrentRoute: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 export const AuthContext = createContext({} as iAuthContext);
 
 const AuthProvider = ({ children }: iAuthContextProps) => {
   const [user, setUser] = useState<iUser | null>(null);
+  const [, setCurrentRoute] = useState<string | null>(null);
 
   const navigate = useNavigate();
 
@@ -88,7 +90,9 @@ const AuthProvider = ({ children }: iAuthContextProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loginUser, registerUser, getUser }}>
+    <AuthContext.Provider
+      value={{ user, loginUser, registerUser, getUser, setCurrentRoute }}
+    >
       {children}
     </AuthContext.Provider>
   );
