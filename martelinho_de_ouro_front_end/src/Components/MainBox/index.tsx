@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
   TableAsset,
   TableEmployer,
@@ -5,8 +6,11 @@ import {
   TableService,
 } from "./Table";
 import { StyledMainBox } from "./styles";
+import { ServiceContext } from "../../Context/serviceContext";
 
 export const MainService = () => {
+  const { setCreateServiceModal } = useContext(ServiceContext);
+
   return (
     <StyledMainBox>
       <div className="options_header">
@@ -15,7 +19,9 @@ export const MainService = () => {
           <h6>Atrasados</h6>
           <h6>Dentro do Prazo</h6>
         </div>
-        <button>Adicionar um Servio</button>
+        <button onClick={() => setCreateServiceModal(true)}>
+          Adicionar um Serviço
+        </button>
       </div>
       <div className="table_div">
         <TableService></TableService>

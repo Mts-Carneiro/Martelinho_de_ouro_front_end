@@ -91,7 +91,13 @@ const AuthProvider = ({ children }: iAuthContextProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, loginUser, registerUser, getUser, setCurrentRoute }}
+      value={{
+        user,
+        loginUser,
+        registerUser,
+        getUser,
+        setCurrentRoute,
+      }}
     >
       {children}
     </AuthContext.Provider>
