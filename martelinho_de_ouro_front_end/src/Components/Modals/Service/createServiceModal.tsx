@@ -1,11 +1,12 @@
 import Modal from "react-modal";
-import { StyledModalForm, StyledDivModal } from "../style";
+import { StyledDivModal } from "../style";
 import { useContext } from "react";
 import { ServiceContext } from "../../../Context/serviceContext";
 import { useForm } from "react-hook-form";
-import { IServiceRequest } from "../../../Interfaces/service.interface";
+import { IServiceResolveRequest } from "../../../Interfaces/service.interface";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { serviceSchema } from "../../../Schemas/Service";
+import { serviceResolveSchema } from "../../../Schemas/Service";
+import { z } from "zod";
 
 const customStyles = {
   content: {
@@ -29,15 +30,16 @@ export const ModalCreateService = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IServiceRequest>({ resolver: zodResolver(serviceSchema) });
+  } = useForm<IServiceResolveRequest>({
+    resolver: zodResolver(serviceResolveSchema),
+  });
 
-  const newServiceSubmit = (data: IServiceRequest) => {
+  const submit = async (data: IServiceResolveRequest) => {
     const newData = {
       ...data,
-      status: "Aprovado",
+      value: parseInt(data.value),
     };
-    console.log(newData);
-    createService(data);
+    createService(newData);
     setModal();
   };
 
@@ -47,7 +49,7 @@ export const ModalCreateService = () => {
         <h2>Novo Serviço</h2>
         <span onClick={() => setModal()}>X</span>
 
-        <StyledModalForm onSubmit={handleSubmit(newServiceSubmit)}>
+        <form onSubmit={handleSubmit(submit)}>
           <label>Prestador do Serviço</label>
           <input
             type="text"
@@ -70,18 +72,13 @@ export const ModalCreateService = () => {
           <input
             type="text"
             placeholder="xxxxxxx"
-            id="licensePlate"
+            id="license_plate"
             {...register("license_plate")}
           />
           <span>{errors.license_plate?.message}</span>
 
           <label>Valor do Serviço</label>
-          <input
-            type="text"
-            placeholder="R$...."
-            id="value"
-            {...register("value")}
-          />
+          <input type="text" id="value" {...register("value")} />
           <span>{errors.value?.message}</span>
 
           <label>Contato</label>
@@ -94,7 +91,11 @@ export const ModalCreateService = () => {
           <span>{errors.phone?.message}</span>
 
           <label>Data de entrega</label>
-          <input type="date" id="deliveryDate" {...register("delivery_date")} />
+          <input
+            type="date"
+            id="delivery_date"
+            {...register("delivery_date")}
+          />
           <span>{errors.delivery_date?.message}</span>
 
           <label>Observação</label>
@@ -106,11 +107,20 @@ export const ModalCreateService = () => {
           />
           <span>{errors.description?.message}</span>
 
+          <label>Status</label>
+          <input
+            type="text"
+            placeholder=""
+            id="status"
+            {...register("status")}
+          />
+          <span>{errors.status?.message}</span>
+
           <div className="div_modal_button">
             <button type="submit">criar serviço</button>
             <button onClick={() => setModal()}>Cancelar</button>
           </div>
-        </StyledModalForm>
+        </form>
       </StyledDivModal>
     </Modal>
   );

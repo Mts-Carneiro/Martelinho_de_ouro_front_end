@@ -9,8 +9,21 @@ const serviceSchema = z.object({
   description: z.string(),
   phone: z.string(),
   value: z.number(),
-  status: z.string(),
-  delivery_date: z.date(),
+  status: z.string().nullable(),
+  delivery_date: z.string(),
+});
+
+const serviceResolveSchema = z.object({
+  enterprise: z.enum(["Localiza", "Veneza", "Particular"]),
+  vehicle: z.string(),
+  license_plate: z
+    .string()
+    .length(7, "The plate numbering must be seven digits long"),
+  description: z.string(),
+  phone: z.string(),
+  value: z.string(),
+  status: z.string().nullable(),
+  delivery_date: z.string(),
 });
 
 const serviceResponseSchema = serviceSchema.extend({
@@ -26,4 +39,5 @@ export {
   serviceSchema,
   serviceUpdateSchema,
   listServicesSchema,
+  serviceResolveSchema,
 };
