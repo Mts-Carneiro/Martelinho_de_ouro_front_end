@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { IServiceResolveRequest } from "../../../Interfaces/service.interface";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { serviceResolveSchema } from "../../../Schemas/Service";
-import { z } from "zod";
 
 const customStyles = {
   content: {
