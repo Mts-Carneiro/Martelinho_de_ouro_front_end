@@ -3,6 +3,7 @@ import { ActionBox } from "./Tr/ActionBox";
 import { StyledTable } from "./styles";
 import { ServiceContext } from "../../../Context/serviceContext";
 import { format } from "date-fns";
+import { IService } from "../../../Interfaces/service.interface";
 
 export const TableService = () => {
   const { services } = useContext(ServiceContext);
@@ -20,7 +21,7 @@ export const TableService = () => {
         </tr>
       </thead>
       <tbody>
-        {services.map((item, i) => (
+        {services.map((item: IService, i) => (
           <tr key={i}>
             <td>{item.license_plate}</td>
             <td>{item.vehicle}</td>
@@ -29,7 +30,7 @@ export const TableService = () => {
             <td>{format(new Date(item.delivery_date), "dd/MM/yyyy")}</td>
             <td>Dentro do prazo</td>
             <td>
-              <ActionBox />
+              <ActionBox key={item.id} serviceId={item.id} />
             </td>
           </tr>
         ))}

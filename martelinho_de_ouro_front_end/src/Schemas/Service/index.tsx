@@ -26,6 +26,8 @@ const serviceResolveSchema = z.object({
   delivery_date: z.string(),
 });
 
+const serviceUpdateResolveSchema = serviceResolveSchema.partial();
+
 const serviceResponseSchema = serviceSchema.extend({
   id: z.string(),
 });
@@ -40,4 +42,5 @@ export {
   serviceUpdateSchema,
   listServicesSchema,
   serviceResolveSchema,
+  serviceUpdateResolveSchema,
 };

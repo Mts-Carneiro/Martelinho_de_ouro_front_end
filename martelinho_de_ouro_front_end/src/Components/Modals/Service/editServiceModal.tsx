@@ -1,5 +1,9 @@
 import Modal from "react-modal";
-import { StyledModalForm, StyledDivModal } from "../style";
+import { StyledDivModal } from "../style";
+import { useContext } from "react";
+import { ServiceContext } from "../../../Context/serviceContext";
+import { IServiceResolveUpdate } from "../../../Interfaces/service.interface";
+import { useForm } from "react-hook-form";
 
 const customStyles = {
   content: {
@@ -11,42 +15,95 @@ const customStyles = {
   },
 };
 
-let modal = false;
-
 export const ModalEditService = () => {
+  const { updateServiceModal, setUpdateServiceModal, updateService } =
+    useContext(ServiceContext);
+
+  const { register, handleSubmit } = useForm<IServiceResolveUpdate>();
+
+  const update = async (data: IServiceResolveUpdate) => {
+    if (typeof data.value === "string") {
+      const newData = {
+        ...data,
+        value: parseInt(data.value),
+      };
+      updateService(newData);
+    } else {
+      console.error("O valor fornecido não é uma string.");
+    }
+  };
+
   return (
-    <Modal isOpen={modal} style={customStyles}>
+    <Modal isOpen={updateServiceModal} style={customStyles}>
       <StyledDivModal>
         <h2>Edite o Serviço</h2>
 
-        <StyledModalForm>
+        <form onSubmit={handleSubmit(update)}>
           <label>Prestador do Serviço</label>
-          <input type="text" placeholder="Nome do prestador" />
-          <span>Erro...</span>
-          <label>Veiculo</label>
-          <input type="text" placeholder="Ex: Onix, HB20..." />
-          <span>Erro...</span>
-          <label>Plca</label>
-          <input type="text" placeholder="xxxxxxx" />
-          <span>Erro...</span>
-          <label>Valor do Serviço</label>
-          <input type="text" placeholder="R$...." />
-          <span>Erro...</span>
-          <label>Contato</label>
-          <input type="text" placeholder="(xx) x xxxx-xxxx" />
-          <span>Erro...</span>
-          <label>Data de entrega</label>
-          <input type="date" />
-          <span>Erro...</span>
-          <label>Observação</label>
-          <input type="text" placeholder="" />
-          <span>Erro...</span>
-        </StyledModalForm>
+          <input
+            type="text"
+            placeholder="Nome do prestador"
+            id="enterprise"
+            {...register("enterprise")}
+          />
 
-        <div className="div_modal_button">
-          <button>Salvar Alterações</button>
-          <button>Cancelar</button>
-        </div>
+          <label>Veiculo</label>
+          <input
+            type="text"
+            placeholder="Ex: Onix, HB20..."
+            id="vehicle"
+            {...register("vehicle")}
+          />
+
+          <label>Placa</label>
+          <input
+            type="text"
+            placeholder="xxxxxxx"
+            id="license_plate"
+            {...register("license_plate")}
+          />
+
+          <label>Valor do Serviço</label>
+          <input type="text" id="value" {...register("value")} />
+
+          <label>Contato</label>
+          <input
+            type="text"
+            placeholder="(xx) x xxxx-xxxx"
+            id="phone"
+            {...register("phone")}
+          />
+
+          <label>Data de entrega</label>
+          <input
+            type="date"
+            id="delivery_date"
+            {...register("delivery_date")}
+          />
+
+          <label>Observação</label>
+          <input
+            type="text"
+            placeholder=""
+            id="description"
+            {...register("description")}
+          />
+
+          <label>Status</label>
+          <input
+            type="text"
+            placeholder=""
+            id="status"
+            {...register("status")}
+          />
+
+          <div className="div_modal_button">
+            <button type="submit">Salvar Alterações</button>
+            <button onClick={() => setUpdateServiceModal(false)}>
+              Cancelar
+            </button>
+          </div>
+        </form>
       </StyledDivModal>
     </Modal>
   );

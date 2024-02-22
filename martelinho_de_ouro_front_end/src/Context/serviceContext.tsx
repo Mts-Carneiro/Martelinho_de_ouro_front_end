@@ -23,10 +23,12 @@ interface iServiceContext {
   setDeleteServiceModal: React.Dispatch<React.SetStateAction<boolean>>;
   retriveServiceModal: boolean;
   setRetriveServiceModal: React.Dispatch<React.SetStateAction<boolean>>;
+  serviceId: string;
+  setServiceId: React.Dispatch<React.SetStateAction<string>>;
   createService: (data: IServiceRequest) => Promise<void>;
   retriveService: (serviceId: string) => Promise<void>;
-  updateService: (data: IServiceUpdate, serviceId: string) => Promise<void>;
-  deleteService: (serviceId: string) => Promise<void>;
+  updateService: (data: IServiceUpdate) => Promise<void>;
+  deleteService: () => Promise<void>;
 }
 
 export const ServiceContext = createContext({} as iServiceContext);
@@ -34,6 +36,7 @@ export const ServiceContext = createContext({} as iServiceContext);
 const ServiceProvider = ({ children }: iServiceContextProps) => {
   const [services, setServices] = useState<IServices>([]);
   const [service, setService] = useState<IService>();
+  const [serviceId, setServiceId] = useState<string>("");
   const [createServiceModal, setCreateServiceModal] = useState<boolean>(false);
   const [updateServiceModal, setUpdateServiceModal] = useState<boolean>(false);
   const [deleteServiceModal, setDeleteServiceModal] = useState<boolean>(false);
@@ -74,20 +77,23 @@ const ServiceProvider = ({ children }: iServiceContextProps) => {
     }
   };
 
-  const updateService = async (data: IServiceUpdate, serviceId: string) => {
+  const updateService = async (data: IServiceUpdate) => {
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
       await api.patch(`/service/${serviceId}`, data);
+      setUpdateServiceModal(false);
       loadServices();
     } catch {
       toast.error("Error");
     }
   };
 
-  const deleteService = async (serviceId: string) => {
+  const deleteService = async () => {
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
       await api.delete(`/service/${serviceId}`);
+      setDeleteServiceModal(false);
+      loadServices();
     } catch {
       toast.error("erro!");
     }
@@ -115,6 +121,8 @@ const ServiceProvider = ({ children }: iServiceContextProps) => {
         updateService,
         retriveService,
         deleteService,
+        serviceId,
+        setServiceId,
       }}
     >
       {children}
