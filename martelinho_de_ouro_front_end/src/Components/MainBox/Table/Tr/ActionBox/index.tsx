@@ -11,6 +11,7 @@ export const ActionBox = (Props: any) => {
     setDeleteServiceModal,
     setRetriveServiceModal,
     setUpdateServiceModal,
+    retriveService,
   } = useContext(ServiceContext);
 
   const deleteService = () => {
@@ -23,9 +24,14 @@ export const ActionBox = (Props: any) => {
     setUpdateServiceModal(true);
   };
 
+  const retriveServiceModal = () => {
+    retriveService(Props.serviceId);
+    setRetriveServiceModal(true);
+  };
+
   return (
     <StyledActionBox>
-      <FaSearchPlus />
+      <FaSearchPlus onClick={() => retriveServiceModal()} />
       <CiEdit onClick={() => updateService()} />
       <RiDeleteBin6Line onClick={() => deleteService()} />
     </StyledActionBox>
