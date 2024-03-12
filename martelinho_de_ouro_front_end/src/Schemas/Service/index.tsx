@@ -10,7 +10,7 @@ const serviceSchema = z.object({
   phone: z.string(),
   value: z.number(),
   status: z.string().nullable(),
-  delivery_date: z.string(),
+  delivery_date: z.date(),
 });
 
 const serviceResolveSchema = z.object({

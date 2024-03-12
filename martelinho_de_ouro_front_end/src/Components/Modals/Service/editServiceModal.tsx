@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { ServiceContext } from "../../../Context/serviceContext";
 import { IServiceResolveUpdate } from "../../../Interfaces/service.interface";
 import { useForm } from "react-hook-form";
+import { parseISO } from "date-fns";
 
 const customStyles = {
   content: {
@@ -22,12 +23,22 @@ export const ModalEditService = () => {
   const { register, handleSubmit } = useForm<IServiceResolveUpdate>();
 
   const update = async (data: IServiceResolveUpdate) => {
-    if (typeof data.value === "string") {
+    if (!data.value) {
+      const keysWithValues: any = Object.fromEntries(
+        Object.entries(data).filter(([i, v]) => v !== "")
+      );
+      updateService(keysWithValues);
+    } else if (typeof data.value === "string") {
       const newData = {
         ...data,
         value: parseInt(data.value),
       };
-      updateService(newData);
+
+      const keysWithValues: any = Object.fromEntries(
+        Object.entries(newData).filter(([i, v]) => v !== "")
+      );
+
+      updateService(keysWithValues);
     } else {
       console.error("O valor fornecido não é uma string.");
     }

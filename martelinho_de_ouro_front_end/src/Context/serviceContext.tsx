@@ -57,7 +57,6 @@ const ServiceProvider = ({ children }: iServiceContextProps) => {
 
   const createService = async (data: IServiceRequest) => {
     try {
-      console.log(data);
       api.defaults.headers.authorization = `Bearer ${token}`;
       await api.post(`/service`, data);
       toast.success("Serviço criado com sucesso!");

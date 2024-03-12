@@ -3,7 +3,10 @@ import { StyledDivModal } from "../style";
 import { useContext } from "react";
 import { ServiceContext } from "../../../Context/serviceContext";
 import { useForm } from "react-hook-form";
-import { IServiceResolveRequest } from "../../../Interfaces/service.interface";
+import {
+  IServiceRequest,
+  IServiceResolveRequest,
+} from "../../../Interfaces/service.interface";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { serviceResolveSchema } from "../../../Schemas/Service";
 
@@ -34,9 +37,10 @@ export const ModalCreateService = () => {
   });
 
   const submit = async (data: IServiceResolveRequest) => {
-    const newData = {
+    const newData: IServiceRequest = {
       ...data,
       value: parseInt(data.value),
+      delivery_date: new Date(data.delivery_date),
     };
     createService(newData);
     setModal();
