@@ -7,6 +7,7 @@ import {
 } from "./Table";
 import { StyledMainBox } from "./styles";
 import { ServiceContext } from "../../Context/serviceContext";
+import { AssetContext } from "../../Context/assetsContext";
 
 export const MainService = () => {
   const { setCreateServiceModal } = useContext(ServiceContext);
@@ -41,11 +42,14 @@ export const MainEmployees = () => {
 };
 
 export const MainAsset = () => {
+  const { setCreateAssetModal } = useContext(AssetContext);
   return (
     <StyledMainBox>
       <div className="table_div">
         <div className="table_div_add_button">
-          <button>Adicionar Entrada</button>
+          <button onClick={() => setCreateAssetModal(true)}>
+            Adicionar Entrada
+          </button>
         </div>
         <TableAsset></TableAsset>
       </div>

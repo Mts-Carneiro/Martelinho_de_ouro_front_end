@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { StyledDivModal } from "../style";
+import { StyledDivModal, StyledModalForm } from "../style";
 import { useContext } from "react";
 import { ServiceContext } from "../../../Context/serviceContext";
 import { useForm } from "react-hook-form";
@@ -52,7 +52,7 @@ export const ModalCreateService = () => {
         <h2>Novo Serviço</h2>
         <span onClick={() => setModal()}>X</span>
 
-        <form onSubmit={handleSubmit(submit)}>
+        <StyledModalForm onSubmit={handleSubmit(submit)}>
           <label>Prestador do Serviço</label>
           <input
             type="text"
@@ -123,7 +123,7 @@ export const ModalCreateService = () => {
             <button type="submit">criar serviço</button>
             <button onClick={() => setModal()}>Cancelar</button>
           </div>
-        </form>
+        </StyledModalForm>
       </StyledDivModal>
     </Modal>
   );

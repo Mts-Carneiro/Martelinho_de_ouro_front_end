@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { ActionBox } from "./Tr/ActionBox";
+import { ActionBox, AssetActionBox } from "./Tr/ActionBox";
 import { StyledTable } from "./styles";
 import { ServiceContext } from "../../../Context/serviceContext";
 import { format } from "date-fns";
 import { IService } from "../../../Interfaces/service.interface";
+import { AssetContext } from "../../../Context/assetsContext";
+import { ICashOperation } from "../../../Interfaces/cash_operation.interface";
 
 export const TableService = () => {
   const { services } = useContext(ServiceContext);
@@ -148,6 +150,7 @@ export const TableEmployer = () => {
 };
 
 export const TableAsset = () => {
+  const { assets } = useContext(AssetContext);
   return (
     <StyledTable>
       <thead>
@@ -161,26 +164,18 @@ export const TableAsset = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Recebimento</td>
-          <td>Pagamento</td>
-          <td>Pagamento referente ao Oxix JkP-21A0</td>
-          <td>R$250,00</td>
-          <td>21/10/23</td>
-          <td>
-            <ActionBox />
-          </td>
-        </tr>
-        <tr>
-          <td>Recebimento</td>
-          <td>Pagamento</td>
-          <td>Pagamento referente ao Oxix JkP-21A0</td>
-          <td>R$250,00</td>
-          <td>21/10/23</td>
-          <td>
-            <ActionBox />
-          </td>
-        </tr>
+        {assets.map((item: ICashOperation, i) => (
+          <tr key={i}>
+            <td>{item.tipe}</td>
+            <td>{item.name}</td>
+            <td>{item.description}</td>
+            <td>R$ {item.value},00</td>
+            <td>{format(new Date(item.createdAt), "dd/MM/yyyy")}</td>
+            <td>
+              <AssetActionBox key={item.id} assetId={item.id} />
+            </td>
+          </tr>
+        ))}
       </tbody>
     </StyledTable>
   );

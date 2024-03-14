@@ -4,6 +4,7 @@ import { CiEdit } from "react-icons/ci";
 import { FaSearchPlus } from "react-icons/fa";
 import { useContext } from "react";
 import { ServiceContext } from "../../../../../Context/serviceContext";
+import { AssetContext } from "../../../../../Context/assetsContext";
 
 export const ActionBox = (Props: any) => {
   const {
@@ -34,6 +35,28 @@ export const ActionBox = (Props: any) => {
       <FaSearchPlus onClick={() => retriveServiceModal()} />
       <CiEdit onClick={() => updateService()} />
       <RiDeleteBin6Line onClick={() => deleteService()} />
+    </StyledActionBox>
+  );
+};
+
+export const AssetActionBox = (Props: any) => {
+  const { setAssetId, setDeleteAssetModal, setUpdateAssetModal } =
+    useContext(AssetContext);
+
+  const updateAsset = () => {
+    setAssetId(Props.assetId);
+    setUpdateAssetModal(true);
+  };
+
+  const deleteAsset = () => {
+    setAssetId(Props.assetId);
+    setDeleteAssetModal(true);
+  };
+
+  return (
+    <StyledActionBox>
+      <CiEdit onClick={() => updateAsset()} />
+      <RiDeleteBin6Line onClick={() => deleteAsset()} />
     </StyledActionBox>
   );
 };
