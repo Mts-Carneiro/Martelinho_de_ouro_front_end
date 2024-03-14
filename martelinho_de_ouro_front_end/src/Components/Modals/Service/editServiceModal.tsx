@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { ServiceContext } from "../../../Context/serviceContext";
 import { IServiceResolveUpdate } from "../../../Interfaces/service.interface";
 import { useForm } from "react-hook-form";
-import { parseISO } from "date-fns";
 
 const customStyles = {
   content: {

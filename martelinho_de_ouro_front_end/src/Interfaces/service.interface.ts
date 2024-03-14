@@ -3,9 +3,7 @@ import {
   listServicesSchema,
   serviceResponseSchema,
   serviceSchema,
-  serviceUpdateSchema,
   serviceResolveSchema,
-  serviceUpdateResolveSchema,
 } from "../Schemas/Service";
 import { DeepPartial } from "react-hook-form";
 

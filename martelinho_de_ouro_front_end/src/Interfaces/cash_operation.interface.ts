@@ -12,6 +12,7 @@ type ICashOperationResolveRequest = z.infer<typeof cashOperationResolveSchema>;
 type ICashOperation = z.infer<typeof cashOperationResponseSchema>;
 type ICashOperations = z.infer<typeof listCashOperations>;
 type ICashOperationUpdate = DeepPartial<ICashOperationRequest>;
+type ICashOperationResolveUpdate = DeepPartial<ICashOperationResolveRequest>;
 
 export type {
   ICashOperation,
@@ -19,4 +20,5 @@ export type {
   ICashOperationUpdate,
   ICashOperations,
   ICashOperationResolveRequest,
+  ICashOperationResolveUpdate,
 };

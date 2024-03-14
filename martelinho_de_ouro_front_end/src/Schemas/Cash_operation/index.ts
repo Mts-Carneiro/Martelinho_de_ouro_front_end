@@ -37,6 +37,8 @@ const cashOperationResponseSchema = cashOperationSchema.extend({
 
 const cashOperationUpdateSchema = cashOperationSchema.partial();
 
+const cashOperationUpdateResolveSchema = cashOperationResolveSchema.partial();
+
 const listCashOperations = cashOperationResponseSchema.array();
 
 export {
@@ -45,4 +47,5 @@ export {
   cashOperationUpdateSchema,
   listCashOperations,
   cashOperationResolveSchema,
+  cashOperationUpdateResolveSchema,
 };
