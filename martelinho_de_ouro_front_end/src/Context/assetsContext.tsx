@@ -61,7 +61,7 @@ const AssetProvider = ({ children }: iAssetContextProps) => {
   const updateAsset = async (data: ICashOperationUpdate) => {
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
-      await api.patch(`/service/${assetId}`, data);
+      await api.patch(`/asset/${assetId}`, data);
       setUpdateAssetModal(false);
       toast.success("Entrada atualizada com sucesso!");
       loadAssets();
@@ -73,7 +73,7 @@ const AssetProvider = ({ children }: iAssetContextProps) => {
   const deleteAsset = async () => {
     try {
       api.defaults.headers.authorization = `Bearer ${token}`;
-      await api.delete(`/service/${assetId}`);
+      await api.delete(`/asset/${assetId}`);
       setDeleteAssetModal(false);
       toast.success("Entrada deletada!");
       loadAssets();

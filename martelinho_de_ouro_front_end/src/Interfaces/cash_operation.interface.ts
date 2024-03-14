@@ -4,9 +4,11 @@ import {
   cashOperationResponseSchema,
   cashOperationSchema,
   listCashOperations,
+  cashOperationResolveSchema,
 } from "../Schemas/Cash_operation";
 
 type ICashOperationRequest = z.infer<typeof cashOperationSchema>;
+type ICashOperationResolveRequest = z.infer<typeof cashOperationResolveSchema>;
 type ICashOperation = z.infer<typeof cashOperationResponseSchema>;
 type ICashOperations = z.infer<typeof listCashOperations>;
 type ICashOperationUpdate = DeepPartial<ICashOperationRequest>;
@@ -16,4 +18,5 @@ export type {
   ICashOperationRequest,
   ICashOperationUpdate,
   ICashOperations,
+  ICashOperationResolveRequest,
 };

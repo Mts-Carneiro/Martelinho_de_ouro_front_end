@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { StyledDivModal, StyledModalForm } from "../style";
+import { StyledDivModal } from "../style";
 import { useContext } from "react";
 import { ServiceContext } from "../../../Context/serviceContext";
 import { useForm } from "react-hook-form";
@@ -24,17 +24,19 @@ export const ModalCreateService = () => {
   const { createServiceModal, setCreateServiceModal, createService } =
     useContext(ServiceContext);
 
-  const setModal = () => {
-    setCreateServiceModal(false);
-  };
-
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IServiceResolveRequest>({
     resolver: zodResolver(serviceResolveSchema),
   });
+
+  const setModal = () => {
+    setCreateServiceModal(false);
+    reset();
+  };
 
   const submit = async (data: IServiceResolveRequest) => {
     const newData: IServiceRequest = {
@@ -52,7 +54,7 @@ export const ModalCreateService = () => {
         <h2>Novo Serviço</h2>
         <span onClick={() => setModal()}>X</span>
 
-        <StyledModalForm onSubmit={handleSubmit(submit)}>
+        <form onSubmit={handleSubmit(submit)}>
           <label>Prestador do Serviço</label>
           <input
             type="text"
@@ -123,7 +125,7 @@ export const ModalCreateService = () => {
             <button type="submit">criar serviço</button>
             <button onClick={() => setModal()}>Cancelar</button>
           </div>
-        </StyledModalForm>
+        </form>
       </StyledDivModal>
     </Modal>
   );

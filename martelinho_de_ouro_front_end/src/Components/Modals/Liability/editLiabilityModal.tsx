@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { StyledModalForm, StyledDivModal } from "../style";
+import { StyledDivModal } from "../style";
 
 const customStyles = {
   content: {
@@ -19,7 +19,7 @@ export const ModalEditLiability = () => {
       <StyledDivModal>
         <h2>Edite sua despesa</h2>
 
-        <StyledModalForm>
+        <form>
           <label>Valor</label>
           <input type="number" placeholder="R$100,00" />
           <span>Erro...</span>
@@ -32,7 +32,7 @@ export const ModalEditLiability = () => {
           <label>Observação</label>
           <input type="text" placeholder="" />
           <span>Erro...</span>
-        </StyledModalForm>
+        </form>
 
         <div className="div_modal_button">
           <button>Salvar despesa</button>

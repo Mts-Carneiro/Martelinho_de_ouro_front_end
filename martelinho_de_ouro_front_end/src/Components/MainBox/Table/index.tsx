@@ -170,7 +170,7 @@ export const TableAsset = () => {
             <td>{item.name}</td>
             <td>{item.description}</td>
             <td>R$ {item.value},00</td>
-            <td>{format(new Date(item.createdAt), "dd/MM/yyyy")}</td>
+            <td>{format(new Date(item.date), "dd/MM/yyyy")}</td>
             <td>
               <AssetActionBox key={item.id} assetId={item.id} />
             </td>

@@ -8,18 +8,18 @@ export const StyledDivModal = styled.div`
   align-items: stretch;
   justify-content: space-between;
 
+  form {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: stretch;
+    gap: 5px;
+  }
+
   .div_modal_button {
     display: flex;
     justify-content: space-around;
   }
-`;
-
-export const StyledModalForm = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: stretch;
-  gap: 5px;
 `;

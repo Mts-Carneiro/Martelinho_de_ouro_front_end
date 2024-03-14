@@ -1,5 +1,7 @@
 import Modal from "react-modal";
 import { StyledDivModal } from "../style";
+import { useContext } from "react";
+import { AssetContext } from "../../../Context/assetsContext";
 
 const customStyles = {
   content: {
@@ -11,17 +13,18 @@ const customStyles = {
   },
 };
 
-let modal = false;
-
 export const ModalDeleteAsset = () => {
+  const { deleteAsset, deleteAssetModal, setDeleteAssetModal } =
+    useContext(AssetContext);
+
   return (
-    <Modal isOpen={modal} style={customStyles}>
+    <Modal isOpen={deleteAssetModal} style={customStyles}>
       <StyledDivModal>
         <h2>Você Deseja realmente apagar esta entrada?</h2>
 
         <div className="div_modal_button">
-          <button>Apagar</button>
-          <button>Cancelar</button>
+          <button onClick={() => deleteAsset()}>Apagar</button>
+          <button onClick={() => setDeleteAssetModal(false)}>Cancelar</button>
         </div>
       </StyledDivModal>
     </Modal>

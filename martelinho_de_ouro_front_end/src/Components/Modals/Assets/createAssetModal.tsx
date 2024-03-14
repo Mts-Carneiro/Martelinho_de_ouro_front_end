@@ -1,12 +1,11 @@
 import Modal from "react-modal";
-import { StyledModalForm, StyledDivModal } from "../style";
+import { StyledDivModal } from "../style";
 import { useContext } from "react";
 import { AssetContext } from "../../../Context/assetsContext";
-import { ICashOperationRequest } from "../../../Interfaces/cash_operation.interface";
-import { cashOperationSchema } from "../../../Schemas/Cash_operation";
+import { ICashOperationResolveRequest } from "../../../Interfaces/cash_operation.interface";
+import { cashOperationResolveSchema } from "../../../Schemas/Cash_operation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { error } from "console";
 
 const customStyles = {
   content: {
@@ -22,20 +21,27 @@ export const ModalCreateAsset = () => {
   const { createAssetModal, setCreateAssetModal, createAsset } =
     useContext(AssetContext);
 
-  const setModal = () => {
-    setCreateAssetModal(false);
-  };
-
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<ICashOperationRequest>({
-    resolver: zodResolver(cashOperationSchema),
+  } = useForm<ICashOperationResolveRequest>({
+    resolver: zodResolver(cashOperationResolveSchema),
   });
 
-  const submit = async (data: ICashOperationRequest) => {
-    createAsset(data);
+  const setModal = () => {
+    setCreateAssetModal(false);
+    reset();
+  };
+
+  const submit = async (data: ICashOperationResolveRequest) => {
+    const newData = {
+      ...data,
+      value: parseInt(data.value),
+      date: new Date(data.date),
+    };
+    createAsset(newData);
     setModal();
   };
 
@@ -44,7 +50,7 @@ export const ModalCreateAsset = () => {
       <StyledDivModal>
         <h2>Crie uma nova entrada</h2>
 
-        <StyledModalForm onSubmit={handleSubmit(submit)}>
+        <form onSubmit={handleSubmit(submit)}>
           <label>Valor</label>
           <input
             type="number"
@@ -80,12 +86,11 @@ export const ModalCreateAsset = () => {
             {...register("description")}
           />
           <span>{errors.description?.message}</span>
-        </StyledModalForm>
-
-        <div className="div_modal_button">
-          <button type="submit">criar entrada</button>
-          <button onClick={() => setModal()}>Cancelar</button>
-        </div>
+          <div className="div_modal_button">
+            <button type="submit">criar entrada</button>
+            <button onClick={() => setModal()}>Cancelar</button>
+          </div>
+        </form>
       </StyledDivModal>
     </Modal>
   );
