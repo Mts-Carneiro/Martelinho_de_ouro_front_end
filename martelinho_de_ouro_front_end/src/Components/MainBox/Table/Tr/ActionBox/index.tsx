@@ -5,6 +5,7 @@ import { FaSearchPlus } from "react-icons/fa";
 import { useContext } from "react";
 import { ServiceContext } from "../../../../../Context/serviceContext";
 import { AssetContext } from "../../../../../Context/assetsContext";
+import { LiabilityContext } from "../../../../../Context/liabilityContext";
 
 export const ActionBox = (Props: any) => {
   const {
@@ -57,6 +58,28 @@ export const AssetActionBox = (Props: any) => {
     <StyledActionBox>
       <CiEdit onClick={() => updateAsset()} />
       <RiDeleteBin6Line onClick={() => deleteAsset()} />
+    </StyledActionBox>
+  );
+};
+
+export const LiabilityActionBox = (Props: any) => {
+  const { setDeleteLiabilityModal, setUpdateLiabilityModal, setLiabilityId } =
+    useContext(LiabilityContext);
+
+  const updateLiability = () => {
+    setLiabilityId(Props.liabilityId);
+    setUpdateLiabilityModal(true);
+  };
+
+  const deleteLiability = () => {
+    setLiabilityId(Props.liabilityId);
+    setDeleteLiabilityModal(true);
+  };
+
+  return (
+    <StyledActionBox>
+      <CiEdit onClick={() => updateLiability()} />
+      <RiDeleteBin6Line onClick={() => deleteLiability()} />
     </StyledActionBox>
   );
 };

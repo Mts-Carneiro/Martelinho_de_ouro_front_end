@@ -1,5 +1,7 @@
 import Modal from "react-modal";
 import { StyledDivModal } from "../style";
+import { useContext } from "react";
+import { LiabilityContext } from "../../../Context/liabilityContext";
 
 const customStyles = {
   content: {
@@ -11,17 +13,20 @@ const customStyles = {
   },
 };
 
-let modal = false;
-
 export const ModalDeleteLiability = () => {
+  const { deleteLiability, deleteLiabilityModal, setDeleteLiabilityModal } =
+    useContext(LiabilityContext);
+
   return (
-    <Modal isOpen={modal} style={customStyles}>
+    <Modal isOpen={deleteLiabilityModal} style={customStyles}>
       <StyledDivModal>
         <h2>Você Deseja realmente apagar esta despesa?</h2>
 
         <div className="div_modal_button">
-          <button>Apagar</button>
-          <button>Cancelar</button>
+          <button onClick={() => deleteLiability()}>Apagar</button>
+          <button onClick={() => setDeleteLiabilityModal(false)}>
+            Cancelar
+          </button>
         </div>
       </StyledDivModal>
     </Modal>

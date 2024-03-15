@@ -8,6 +8,7 @@ import {
 import { StyledMainBox } from "./styles";
 import { ServiceContext } from "../../Context/serviceContext";
 import { AssetContext } from "../../Context/assetsContext";
+import { LiabilityContext } from "../../Context/liabilityContext";
 
 export const MainService = () => {
   const { setCreateServiceModal } = useContext(ServiceContext);
@@ -58,11 +59,14 @@ export const MainAsset = () => {
 };
 
 export const MainLiability = () => {
+  const { setCreateLiabilityModal } = useContext(LiabilityContext);
   return (
     <StyledMainBox>
       <div className="table_div">
         <div className="table_div_add_button">
-          <button>Adicionar Despesa</button>
+          <button onClick={() => setCreateLiabilityModal(true)}>
+            Adicionar Despesa
+          </button>
         </div>
         <TableLiability></TableLiability>
       </div>
